@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TiendaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="sp_CrearEditarCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdCliente" Type="int" Mode="In" />
+          <Parameter Name="Cedula" Type="nvarchar" Mode="In" />
+          <Parameter Name="Nombre" Type="nvarchar" Mode="In" />
+          <Parameter Name="Apellido" Type="nvarchar" Mode="In" />
+          <Parameter Name="Telefono" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_CrearEditarDetalleVenta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdVenta" Type="int" Mode="In" />
+          <Parameter Name="IdDetalleVenta" Type="int" Mode="In" />
+          <Parameter Name="IdProducto" Type="int" Mode="In" />
+          <Parameter Name="ValorUnitario" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="sp_CrearEditarProducto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdProducto" Type="int" Mode="In" />
+          <Parameter Name="NombreProducto" Type="nvarchar" Mode="In" />
+          <Parameter Name="ValorUnitario" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="sp_CrearEditarVenta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdVenta" Type="int" Mode="In" />
+          <Parameter Name="IdCliente" Type="int" Mode="In" />
+          <Parameter Name="ValorTotal" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="sp_ObtenerClientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_ObtenerDetalleVentas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdVenta" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_ObtenerProductos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_ObtenerVentas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdCliente" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="TiendaModelStoreContainer" />
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TiendaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="TiendaEntities" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="sp_CrearEditarCliente" ReturnType="Collection(TiendaModel.sp_CrearEditarCliente_Result)">
+            <Parameter Name="IdCliente" Mode="In" Type="Int32" />
+            <Parameter Name="Cedula" Mode="In" Type="String" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Apellido" Mode="In" Type="String" />
+            <Parameter Name="Telefono" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_CrearEditarDetalleVenta" ReturnType="Collection(TiendaModel.sp_CrearEditarDetalleVenta_Result)">
+            <Parameter Name="IdVenta" Mode="In" Type="Int32" />
+            <Parameter Name="IdDetalleVenta" Mode="In" Type="Int32" />
+            <Parameter Name="IdProducto" Mode="In" Type="Int32" />
+            <Parameter Name="ValorUnitario" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="sp_CrearEditarProducto" ReturnType="Collection(TiendaModel.sp_CrearEditarProducto_Result)">
+            <Parameter Name="IdProducto" Mode="In" Type="Int32" />
+            <Parameter Name="NombreProducto" Mode="In" Type="String" />
+            <Parameter Name="ValorUnitario" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="sp_CrearEditarVenta" ReturnType="Collection(TiendaModel.sp_CrearEditarVenta_Result)">
+            <Parameter Name="IdVenta" Mode="In" Type="Int32" />
+            <Parameter Name="IdCliente" Mode="In" Type="Int32" />
+            <Parameter Name="ValorTotal" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ObtenerClientes" ReturnType="Collection(TiendaModel.sp_ObtenerClientes_Result)" />
+          <FunctionImport Name="sp_ObtenerDetalleVentas" ReturnType="Collection(TiendaModel.sp_ObtenerDetalleVentas_Result)">
+            <Parameter Name="IdVenta" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ObtenerProductos" ReturnType="Collection(TiendaModel.sp_ObtenerProductos_Result)" />
+          <FunctionImport Name="sp_ObtenerVentas" ReturnType="Collection(TiendaModel.sp_ObtenerVentas_Result)">
+            <Parameter Name="IdCliente" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="sp_CrearEditarCliente_Result">
+          <Property Type="Int32" Name="IdCliente" Nullable="false" />
+          <Property Type="String" Name="Cedula" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="300" />
+          <Property Type="String" Name="Apellido" Nullable="false" MaxLength="300" />
+          <Property Type="String" Name="Telefono" Nullable="false" MaxLength="25" />
+          <Property Type="String" Name="Nota" Nullable="true" MaxLength="300" />
+          <Property Type="Int32" Name="EstadoNota" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_CrearEditarDetalleVenta_Result">
+          <Property Type="Int32" Name="IdVenta" Nullable="false" />
+          <Property Type="Int32" Name="IdDetalleVenta" Nullable="false" />
+          <Property Type="Int32" Name="IdProducto" Nullable="false" />
+          <Property Type="Decimal" Name="ValorUnitario" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="String" Name="Nota" Nullable="true" MaxLength="300" />
+          <Property Type="Int32" Name="EstadoNota" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_CrearEditarProducto_Result">
+          <Property Type="Int32" Name="IdProducto" Nullable="false" />
+          <Property Type="String" Name="NombreProducto" Nullable="false" MaxLength="300" />
+          <Property Type="Decimal" Name="ValorUnitario" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="String" Name="Nota" Nullable="true" MaxLength="300" />
+          <Property Type="Int32" Name="EstadoNota" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_CrearEditarVenta_Result">
+          <Property Type="Int32" Name="IdVenta" Nullable="false" />
+          <Property Type="Int32" Name="IdCliente" Nullable="false" />
+          <Property Type="Decimal" Name="ValorTotal" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="String" Name="Nota" Nullable="true" MaxLength="300" />
+          <Property Type="Int32" Name="EstadoNota" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_ObtenerClientes_Result">
+          <Property Type="Int32" Name="IdCliente" Nullable="false" />
+          <Property Type="String" Name="Cedula" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="300" />
+          <Property Type="String" Name="Apellido" Nullable="false" MaxLength="300" />
+          <Property Type="String" Name="Telefono" Nullable="false" MaxLength="25" />
+        </ComplexType>
+        <ComplexType Name="sp_ObtenerDetalleVentas_Result">
+          <Property Type="Int32" Name="IdVenta" Nullable="false" />
+          <Property Type="Int32" Name="IdDetalleVenta" Nullable="false" />
+          <Property Type="Int32" Name="IdProducto" Nullable="false" />
+          <Property Type="Decimal" Name="ValorUnitario" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="String" Name="NombreProducto" Nullable="false" MaxLength="300" />
+        </ComplexType>
+        <ComplexType Name="sp_ObtenerProductos_Result">
+          <Property Type="Int32" Name="IdProducto" Nullable="false" />
+          <Property Type="String" Name="NombreProducto" Nullable="false" MaxLength="300" />
+          <Property Type="Decimal" Name="ValorUnitario" Nullable="false" Precision="18" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="sp_ObtenerVentas_Result">
+          <Property Type="Int32" Name="IdVenta" Nullable="false" />
+          <Property Type="Int32" Name="IdCliente" Nullable="false" />
+          <Property Type="Decimal" Name="ValorTotal" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="300" />
+          <Property Type="String" Name="Apellido" Nullable="false" MaxLength="300" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TiendaModelStoreContainer" CdmEntityContainer="TiendaEntities" >
+          <FunctionImportMapping FunctionImportName="sp_CrearEditarCliente" FunctionName="TiendaModel.Store.sp_CrearEditarCliente">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TiendaModel.sp_CrearEditarCliente_Result">
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Nota" ColumnName="Nota" />
+                <ScalarProperty Name="EstadoNota" ColumnName="EstadoNota" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_CrearEditarDetalleVenta" FunctionName="TiendaModel.Store.sp_CrearEditarDetalleVenta">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TiendaModel.sp_CrearEditarDetalleVenta_Result">
+                <ScalarProperty Name="IdVenta" ColumnName="IdVenta" />
+                <ScalarProperty Name="IdDetalleVenta" ColumnName="IdDetalleVenta" />
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="ValorUnitario" ColumnName="ValorUnitario" />
+                <ScalarProperty Name="Nota" ColumnName="Nota" />
+                <ScalarProperty Name="EstadoNota" ColumnName="EstadoNota" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_CrearEditarProducto" FunctionName="TiendaModel.Store.sp_CrearEditarProducto">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TiendaModel.sp_CrearEditarProducto_Result">
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="NombreProducto" ColumnName="NombreProducto" />
+                <ScalarProperty Name="ValorUnitario" ColumnName="ValorUnitario" />
+                <ScalarProperty Name="Nota" ColumnName="Nota" />
+                <ScalarProperty Name="EstadoNota" ColumnName="EstadoNota" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_CrearEditarVenta" FunctionName="TiendaModel.Store.sp_CrearEditarVenta">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TiendaModel.sp_CrearEditarVenta_Result">
+                <ScalarProperty Name="IdVenta" ColumnName="IdVenta" />
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="ValorTotal" ColumnName="ValorTotal" />
+                <ScalarProperty Name="Nota" ColumnName="Nota" />
+                <ScalarProperty Name="EstadoNota" ColumnName="EstadoNota" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_ObtenerClientes" FunctionName="TiendaModel.Store.sp_ObtenerClientes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TiendaModel.sp_ObtenerClientes_Result">
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_ObtenerDetalleVentas" FunctionName="TiendaModel.Store.sp_ObtenerDetalleVentas">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TiendaModel.sp_ObtenerDetalleVentas_Result">
+                <ScalarProperty Name="IdVenta" ColumnName="IdVenta" />
+                <ScalarProperty Name="IdDetalleVenta" ColumnName="IdDetalleVenta" />
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="ValorUnitario" ColumnName="ValorUnitario" />
+                <ScalarProperty Name="NombreProducto" ColumnName="NombreProducto" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_ObtenerProductos" FunctionName="TiendaModel.Store.sp_ObtenerProductos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TiendaModel.sp_ObtenerProductos_Result">
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="NombreProducto" ColumnName="NombreProducto" />
+                <ScalarProperty Name="ValorUnitario" ColumnName="ValorUnitario" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_ObtenerVentas" FunctionName="TiendaModel.Store.sp_ObtenerVentas">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TiendaModel.sp_ObtenerVentas_Result">
+                <ScalarProperty Name="IdVenta" ColumnName="IdVenta" />
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="ValorTotal" ColumnName="ValorTotal" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
